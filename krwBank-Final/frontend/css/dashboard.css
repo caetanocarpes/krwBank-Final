@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/* ===============================
+   RESET E BASE
+================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  background: #f0f2f5;
+  color: #1a1f3b;
+}
+
+/* ===============================
+   SIDEBAR EXPANSÍVEL
+================================== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 60px;
+  background: #1a1f3b;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 100;
+}
+.sidebar:hover {
+  width: 200px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+.logo-only {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.sidebar:hover .logo-only {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   MENU DA SIDEBAR
+================================== */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  width: 100%;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+.menu-item .label {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sidebar:hover .menu-item .label {
+  opacity: 1;
+}
+.menu-item .icon {
+  font-size: 18px;
+}
+.menu-item:hover,
+.menu-item.active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.menu-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background: #ffc107;
+  border-radius: 2px;
+}
+
+/* ===============================
+   CONTEÚDO PRINCIPAL
+================================== */
+.main-content {
+  margin-left: 60px;
+  padding: 40px;
+  transition: margin-left 0.3s;
+}
+.sidebar:hover ~ .main-content {
+  margin-left: 200px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.account-info {
+  font-size: 14px;
+  color: #555;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-name {
+  font-size: 16px;
+}
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* ===============================
+   AÇÕES RÁPIDAS (BOTÕES MODERNOS)
+================================== */
+.quick-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.quick-actions .action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.4s ease;
+}
+.quick-actions .action.deposit::before   { content: "💰"; }
+.quick-actions .action.transfer::before  { content: "🔄"; }
+.quick-actions .action.pay::before       { content: "💳"; }
+.quick-actions .action:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #5a67d8, #6c5bc0);
+}
+
+/* ===============================
+   CARTÃO DE LIMITE
+================================== */
+.limit-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 24px 0;
+}
+.limit-card .card-image img {
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.limit-card .card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.limit-card .card-label {
+  font-size: 14px;
+  color: #555;
+}
+.limit-card .card-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a1a2e;
+}
+.btn-adjust {
+  background: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #4e54c8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+.btn-adjust:hover {
+  background: #4e54c8;
+  color: #fff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   CARTÃO DE SALDO
+================================== */
+.balance-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+.balance-card .card-label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.balance-card .card-value {
+  font-size: 28px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.balance-card:hover .card-value {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* ===============================
+   TRANSAÇÕES
+================================== */
+.transactions {
+  max-width: 500px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.transaction-list {
+  list-style: none;
+}
+.transaction-item {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-bottom: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.transaction-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.transaction-desc {
+  font-size: 16px;
+}
+.transaction-amount {
+  font-size: 16px;
+  font-weight: 600;
+}
+.transaction-amount.negative {
+  color: #dc3545;
+}
+.transaction-amount.positive {
+  color: #28a745;
+}
+
+/* ===============================
+   MODAL (SEM FADE/OVERLAY ESCURO)
+================================== */
+/* Overlay transparente, sem escurecer tela */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal centralizado */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+/* Cabeçalho do modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-body {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn.primary {
+  background: #4e54c8;
+  color: #fff;
+  border: none;
+}
+.btn.ghost {
+  background: transparent;
+  color: #555;
+  border: 1px solid #ccc;
+}
+.btn.primary:hover {
+  background: #3b3fa5;
+}
+.btn.ghost:hover {
+  background: #f5f5f5;
+}
+#modal-pagamento-escolha {
+  /* garante que cubra a tela toda */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+
+  /* centralização */
+  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  z-index: 9999;
+}
+
+#modal-pagamento-escolha .modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRW Bank - Visão Geral</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+</head>
+<body>
+
+<!-- ========== SIDEBAR EXPANSÍVEL ========== -->
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <img src="assets/logo.png" alt="KRW Logo" class="logo-only" />
+    </div>
+    <nav class="sidebar-menu">
+        <a href="#" class="menu-item active">
+            <span class="icon">🏠</span>
+            <span class="label">Início</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <span class="icon">⚙️</span>
+            <span class="label">Configurações</span>
+        </a>
+    </nav>
+</aside>
+
+<!-- ========== CONTEÚDO PRINCIPAL ========== -->
+<main class="main-content">
+    <header class="header">
+        <div id="account-info" class="account-info">Carregando dados...</div>
+        <div class="user-profile">
+            <span id="user-name" class="user-name">Usuário</span>
+        </div>
+    </header>
+
+    <h1 class="page-title">Visão Geral</h1>
+
+    <!-- Ações Rápidas -->
+    <section class="quick-actions">
+        <button id="btn-deposit" class="action deposit">Depositar</button>
+        <button id="btn-transfer" class="action transfer">Transferir</button>
+        <button id="btn-pay" class="action pay">Pagar Conta</button>
+    </section>
+
+    <!-- Cartão de Limite -->
+    <section class="limit-card">
+        <div class="card-image">
+            <img src="assets/cartao_limite.png" alt="Cartão de Limite" />
+        </div>
+        <div class="card-info">
+            <div class="card-label">Limite do Cartão</div>
+            <div id="limit-value" class="card-value">R$ 0,00</div>
+            <button id="btn-limit" class="btn-adjust">Ajustar Limite</button>
+        </div>
+    </section>
+
+    <!-- Cartão de Saldo -->
+    <section class="balance-card">
+        <div class="card-label">Saldo</div>
+        <div id="balance-value" class="card-value">R$ 0,00</div>
+    </section>
+
+    <!-- Transações -->
+    <section class="transactions">
+        <h2 class="section-title">Transações Recentes</h2>
+        <ul id="transaction-list" class="transaction-list"></ul>
+    </section>
+</main>
+
+<!-- ========== OVERLAY & MODAL ========== -->
+<!-- Os dois começam ocultos via CSS (display: none) -->
+<div id="modal-overlay" class="modal-overlay"></div>
+<div id="modal" class="modal">
+    <form id="modal-form" class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title"></h3>
+            <button type="button" id="modal-close" class="modal-close">×</button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+            <button type="button" id="modal-cancel" class="btn ghost">Cancelar</button>
+            <button type="submit" class="btn primary">Confirmar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Modal para escolher a forma de pagamento -->
+<div id="modal-pagamento-escolha">
+    <div class="modal-content">
+        <h3 style="margin-bottom: 20px;">Escolha a forma de pagamento</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button id="escolher-cartao" class="btn primary">💳 Cartão</button>
+            <button id="escolher-conta" class="btn primary">💰 Conta Bancária</button>
+            <button id="cancelar-pagamento" class="btn ghost">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #4f4fd6, #1e90ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo-floating {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeInDown 0.8s ease-out;
+  z-index: 999;
+}
+
+.krw-logo {
+  height: 247px;
+  transition: transform 0.3s ease;
+}
+
+.krw-logo:hover {
+  transform: scale(1.1);
+}
+
+.slogan {
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 500;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  max-width: 100%;
+  min-height: 500px;
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* container base para os formulários */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+/* login sempre no lado esquerdo */
+.sign-in-container {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* cadastro SEMPRE no lado direito */
+.sign-up-container {
+  left: 50%;
+}
+
+/* ao clicar em “Cadastrar”... */
+.container.right-panel-active .sign-in-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ...o cadastro aparece com fade */
+.container.right-panel-active .sign-up-container {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 5;
+}
+
+/* overlay */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(to right, #1e90ff, #4f4fd6);
+  position: relative;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left  { transform: translateX(-20%); }
+.overlay-right { right: 0; transform: translateX(0); }
+
+.container.right-panel-active .overlay-left  { transform: translateX(0); }
+.container.right-panel-active .overlay-right { transform: translateX(20%); }
+
+/* Inputs, botões e mensagens*/
+input {
+  background: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 8px;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #1e90ff;
+  background: #1e90ff;
+  color: #fff;
+  padding: 12px 45px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+}
+
+button:active { transform: scale(0.95); }
+button.ghost { background: transparent; border-color: #fff; }
+
+.mensagem {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: red;
+  min-height: 18px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.mensagem.visivel { opacity: 1; }
+.mensagem.sucesso { color: #28a745; }
+.mensagem.erro    { color: #dc3545; }
+
+/* animações de página */
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity:1; }
+  to   { transform: translateX(-100vw); opacity:0; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity:0; }
+  to   { transform: translateX(0); opacity:1; }
+}
+
+body.slide-out-left { animation: slideOutLeft 0.5s ease forwards; overflow:hidden; }
+body.slide-in-right { animation: slideInRight 0.6s ease-out; }
+/* ==============================
+   Textos nos formulários (fundo branco)
+   ============================== */
+.sign-in-container h1,
+.sign-in-container p,
+.sign-up-container h1,
+.sign-up-container p,
+.sign-in-container input,
+.sign-up-container input {
+  color: #000; /* texto preto */
+}
+
+.sign-in-container input::placeholder,
+.sign-up-container input::placeholder {
+  color: #666; /* placeholder cinza escuro */
+}
+
+/* ==============================
+   Textos no overlay (fundo azul)
+   ============================== */
+.overlay-panel h1,
+.overlay-panel p,
+.overlay-panel button.ghost {
+  color: #fff; /* texto branco */
+}

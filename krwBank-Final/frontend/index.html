@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRW Bank - Login/Cadastro</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="slide-in-right">
+<div class="logo-floating">
+    <img src="assets/logo.png" alt="KRW Logo" class="krw-logo" />
+</div>
+
+<div class="container" id="container">
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="form-container sign-up-container">
+        <form id="cadastroForm">
+            <h1>Criar Conta</h1>
+            <input type="text" name="nome" placeholder="Nome completo" required />
+            <input type="date" name="dataNascimento" required />
+            <input type="text" name="cpf" placeholder="CPF (somente números)" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="senha" placeholder="Senha" required />
+            <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required />
+            <p id="cadastro-msg" class="mensagem"></p>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <div class="form-container sign-in-container">
+        <form id="loginForm">
+            <h1>Entrar</h1>
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="senha" placeholder="Senha" required />
+            <p id="login-msg" class="mensagem"></p>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- PAINEL DE TRANSIÇÃO -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Bem-vindo de volta!</h1>
+                <p>Para se manter conectado, entre com suas credenciais</p>
+                <button class="ghost" id="signIn">Entrar</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Olá, amigo!</h1>
+                <p>Insira seus dados e comece sua jornada financeira com a KRW</p>
+                <button class="ghost" id="signUp">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>
